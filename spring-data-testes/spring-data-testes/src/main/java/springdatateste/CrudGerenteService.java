@@ -1,4 +1,4 @@
-package springdatateste.service;
+package springdatateste;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
-import springdatatestes.orm.Gerente;
-import springdatatestes.repository.GerenteRepository;
+import springdatateste.orm.Gerente;
+import springdatateste.repository.GerenteRepository;
 
 @Service
 public class CrudGerenteService {

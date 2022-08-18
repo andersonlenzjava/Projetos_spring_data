@@ -1,4 +1,4 @@
-package springdatatestes;
+package springdatateste;
 
 import java.util.Scanner;
 
@@ -9,13 +9,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import springdatateste.service.CrudEntregadorService;
-import springdatateste.service.CrudGerenteService;
-
 @SpringBootApplication
-@ComponentScan("springdatateste.service") 
-@EnableJpaRepositories(basePackages = "springdatatestes.repository") // para localizar onde estão os repositórios
-@EntityScan(basePackages = "springdatatestes.orm") 
+@ComponentScan("springdatateste") 
+@EnableJpaRepositories(basePackages = "springdatateste.repository") // para localizar onde estão os repositórios
+@EntityScan(basePackages = "springdatateste.orm") 
 public class SpringDataTestesApplication implements CommandLineRunner  {
 
 	private Boolean system = true;

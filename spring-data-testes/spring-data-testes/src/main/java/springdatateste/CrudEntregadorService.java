@@ -1,4 +1,4 @@
-package springdatateste.service;
+package springdatateste;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -6,16 +6,20 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
-import springdatatestes.orm.Entregador;
-import springdatatestes.repository.EntregadorRepository;
+import springdatateste.orm.Entregador;
+import springdatateste.repository.EntregadorDinamicConsultRepository;
+import springdatateste.repository.EntregadorRepository;
 
 @Service
 public class CrudEntregadorService {
 	
 	private final EntregadorRepository entregadorRepository;
+	private final EntregadorDinamicConsultRepository entregadorDinamicRepository;
 	
-	public CrudEntregadorService(EntregadorRepository entregadorRepository) {
+	public CrudEntregadorService(EntregadorRepository entregadorRepository, 
+			EntregadorDinamicConsultRepository entregadorDinamicRepository) {
 		this.entregadorRepository = entregadorRepository;
+		this.entregadorDinamicRepository = entregadorDinamicRepository;
 	}
 	
 	public void inicial(Scanner scanner) {
@@ -27,6 +31,7 @@ public class CrudEntregadorService {
 			System.out.println("2 - Atualizar");
 			System.out.println("3 - Visualizar");
 			System.out.println("4 - Deletar");
+			System.out.println("5 - Busca dinamica");
 
 			int action = scanner.nextInt();
 
@@ -43,6 +48,9 @@ public class CrudEntregadorService {
 			case 4:
 				deletar(scanner);
 				break;
+			case 5:
+				buscaDinamica(scanner);
+				break;	
 			default:
 				system = false;
 				break;
@@ -115,5 +123,16 @@ public class CrudEntregadorService {
 		Long id = scanner.nextLong();
 		entregadorRepository.deleteById(id);
 		System.out.println("Deletado");
+	}
+	
+	private void buscaDinamica(Scanner scanner) {
+		System.out.println("Nome do entregador: ");
+		String nome = scanner.next();
+		System.out.println("CPF do entregador: ");
+		String cpf = scanner.next();
+		System.out.println("Salario do entregador: ");
+		BigDecimal salario = scanner.nextBigDecimal();
+		Iterable<Entregador> entregadores = entregadorDinamicRepository.customFindMethod(nome, cpf, salario);
+		entregadores.forEach(entregador -> System.out.println(entregador));
 	}
 }

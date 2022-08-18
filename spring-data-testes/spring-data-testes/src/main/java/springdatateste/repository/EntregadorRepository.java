@@ -1,10 +1,10 @@
-package springdatatestes.repository;
+package springdatateste.repository;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import springdatatestes.orm.Entregador;
+import springdatateste.orm.Entregador;
 
 @Repository
 public interface EntregadorRepository extends CrudRepository<Entregador, Long>, JpaSpecificationExecutor<Entregador> {

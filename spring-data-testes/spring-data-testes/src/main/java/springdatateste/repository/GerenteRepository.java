@@ -1,10 +1,10 @@
-package springdatatestes.repository;
+package springdatateste.repository;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import springdatatestes.orm.Gerente;
+import springdatateste.orm.Gerente;
 
 @Repository
 public interface GerenteRepository extends CrudRepository<Gerente, Long>, JpaSpecificationExecutor<Gerente>  {

@@ -1,4 +1,4 @@
-package springdatatestes.orm;
+package springdatateste.orm;
 
 import java.math.BigDecimal;
 
