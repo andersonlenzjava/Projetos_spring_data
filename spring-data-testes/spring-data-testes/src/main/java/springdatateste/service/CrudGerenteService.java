@@ -1,4 +1,4 @@
-package springdatateste;
+package springdatateste.service;
 
 import java.math.BigDecimal;
 import java.util.Optional;
