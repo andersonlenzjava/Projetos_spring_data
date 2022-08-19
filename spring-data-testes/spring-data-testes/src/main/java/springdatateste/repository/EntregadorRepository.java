@@ -11,4 +11,6 @@ public interface EntregadorRepository extends CrudRepository<Entregador, Long>, 
 
 	boolean existsByNomeAndCpfIgnoreCase(String nome, String cpf);
 	
+	Entregador findByFirstNameIgnoreCase(String nome);
+	
 }
