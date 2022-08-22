@@ -1,6 +1,7 @@
 package springdatateste.service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -32,6 +33,7 @@ public class CrudEntregadorService {
 			System.out.println("3 - Visualizar");
 			System.out.println("4 - Deletar");
 			System.out.println("5 - Busca dinamica");
+			System.out.println("6 - Busca por nome");
 
 			int action = scanner.nextInt();
 
@@ -50,7 +52,10 @@ public class CrudEntregadorService {
 				break;
 			case 5:
 				buscaDinamica(scanner);
-				break;	
+				break;
+			case 6:
+				buscaPorNome(scanner);
+				break;		
 			default:
 				system = false;
 				break;
@@ -59,7 +64,7 @@ public class CrudEntregadorService {
 	}
 
 	private void salvar(Scanner scanner) {
-		
+		scanner.useDelimiter("\r\n");
 		System.out.println("Nome do entregador: ");
 		String nome = scanner.next();
 		System.out.println("CPF do entregador: ");
@@ -134,5 +139,12 @@ public class CrudEntregadorService {
 		BigDecimal salario = scanner.nextBigDecimal();
 		Iterable<Entregador> entregadores = entregadorDinamicRepository.customFindMethod(nome, cpf, salario);
 		entregadores.forEach(entregador -> System.out.println(entregador));
+	}
+	
+	public void buscaPorNome(Scanner scanner) {
+		System.out.println("Nome do entregador: ");
+		String nome = scanner.next();
+		List<Entregador> entregador = entregadorRepository.findByNamefuncionario(nome);
+		System.out.println(entregador);
 	}
 }

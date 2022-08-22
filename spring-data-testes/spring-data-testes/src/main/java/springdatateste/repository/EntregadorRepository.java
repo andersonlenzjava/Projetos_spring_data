@@ -1,7 +1,11 @@
 package springdatateste.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import springdatateste.orm.Entregador;
@@ -11,6 +15,7 @@ public interface EntregadorRepository extends CrudRepository<Entregador, Long>, 
 
 	boolean existsByNomeAndCpfIgnoreCase(String nome, String cpf);
 	
-	Entregador findByFirstNameIgnoreCase(String nome);
-	
+	@Query("SELECT e FROM Entregador e WHERE e.nome = :nome")
+	List<Entregador> findByNamefuncionario(@Param("nome") String nome);
+
 }

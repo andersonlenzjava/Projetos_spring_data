@@ -51,7 +51,8 @@ public class CrudGerenteService {
 	}
 
 	private void salvar(Scanner scanner) {
-
+		
+		scanner.useDelimiter("\r\n");
 		System.out.println("Nome do gerente: ");
 		String nome = scanner.next();
 		System.out.println("CPF do gerente: ");
