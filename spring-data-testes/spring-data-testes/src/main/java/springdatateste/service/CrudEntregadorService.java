@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import springdatateste.orm.Entregador;
 import springdatateste.repository.EntregadorDinamicConsultRepository;
+import springdatateste.repository.EntregadorDinamicConsultRepositorynull;
 import springdatateste.repository.EntregadorRepository;
 
 @Service
@@ -16,11 +17,14 @@ public class CrudEntregadorService {
 	
 	private final EntregadorRepository entregadorRepository;
 	private final EntregadorDinamicConsultRepository entregadorDinamicRepository;
+	private final EntregadorDinamicConsultRepositorynull entregadorDinamicRepositorynull;
 	
 	public CrudEntregadorService(EntregadorRepository entregadorRepository, 
-			EntregadorDinamicConsultRepository entregadorDinamicRepository) {
+			EntregadorDinamicConsultRepository entregadorDinamicRepository, 
+			EntregadorDinamicConsultRepositorynull entregadorDinamicRepositorynull) {
 		this.entregadorRepository = entregadorRepository;
 		this.entregadorDinamicRepository = entregadorDinamicRepository;
+		this.entregadorDinamicRepositorynull = entregadorDinamicRepositorynull;
 	}
 	
 	public void inicial(Scanner scanner) {
@@ -34,6 +38,7 @@ public class CrudEntregadorService {
 			System.out.println("4 - Deletar");
 			System.out.println("5 - Busca dinamica");
 			System.out.println("6 - Busca por nome");
+			System.out.println("7 - Busca por salario");
 
 			int action = scanner.nextInt();
 
@@ -55,7 +60,10 @@ public class CrudEntregadorService {
 				break;
 			case 6:
 				buscaPorNome(scanner);
-				break;		
+				break;
+			case 7:
+				buscaPorSalario(scanner);
+				break;	
 			default:
 				system = false;
 				break;
@@ -64,7 +72,6 @@ public class CrudEntregadorService {
 	}
 
 	private void salvar(Scanner scanner) {
-		scanner.useDelimiter("\r\n");
 		System.out.println("Nome do entregador: ");
 		String nome = scanner.next();
 		System.out.println("CPF do entregador: ");
@@ -146,5 +153,13 @@ public class CrudEntregadorService {
 		String nome = scanner.next();
 		List<Entregador> entregador = entregadorRepository.findByNamefuncionario(nome);
 		System.out.println(entregador);
+	}
+	
+	public void buscaPorSalario(Scanner scanner) {
+		System.out.println("Salario do entregador: ");
+		BigDecimal salario = scanner.nextBigDecimal();
+		List<Entregador> entregador = entregadorRepository.findBySalarioFuncionario(salario);
+		System.out.println(entregador);
+		
 	}
 }

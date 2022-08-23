@@ -1,5 +1,6 @@
 package springdatateste.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -17,5 +18,8 @@ public interface EntregadorRepository extends CrudRepository<Entregador, Long>, 
 	
 	@Query("SELECT e FROM Entregador e WHERE e.nome = :nome")
 	List<Entregador> findByNamefuncionario(@Param("nome") String nome);
+	
+	@Query("SELECT e FROM Entregador e WHERE e.salario = :salario")
+	List<Entregador> findBySalarioFuncionario(@Param("salario") BigDecimal salario);
 
 }

@@ -40,6 +40,7 @@ public class SpringDataTestesApplication implements CommandLineRunner  {
 		Scanner scanner = new Scanner(System.in);
 
 		while (system) {
+			scanner.useDelimiter("\r\n");
 			System.out.println("Qual função deseja executar?");
 			System.out.println("0 - Sair");
 			System.out.println("1 - Entregador");
